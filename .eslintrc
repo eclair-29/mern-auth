@@ -12,7 +12,9 @@
   },
   "rules": {
     "comma-dangle": ["error", "never"],
+    "no-shadow": "off",
     "no-unused-vars": ["error", { "vars": "local", "args": "none" }],
+    "no-use-before-define": "off",
     "prettier/prettier": ["error"],
     "quotes": ["error", "double"]
   }

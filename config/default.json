@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://eclair-29:eclair-29@mern-auth-test-db-3rmxt.mongodb.net/test?retryWrites=true",
+  "jwtSecret": "mern_auth_my_jwt_secret"
+}
