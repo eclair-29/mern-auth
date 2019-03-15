@@ -70,9 +70,40 @@ router.post("/", (req, res) => {
 // description:   Fetch user data
 // access:        private
 router.get("/user", auth, (req, res) => {
-  User.findById(req.user.id)
-    .select("-password")
-    .then(user => res.json(user));
+  // Find the user by Id reference
+  const getUserIdRef = () => {
+    return User.findById(req.user.id)
+      .select("-password")
+      .then(user => user);
+  };
+
+  // After finding a reference Id, then
+  // Update the profile details embedded to the ref user
+  const updateUserProfile = user => {
+    const query = { _id: user.id };
+    const update = {
+      profile: {
+        _id: user.id,
+        avatar: user.fname.substring(0, 1) + user.lname.substring(0, 1),
+        display_name: `${user.fname} ${user.lname}`
+      }
+    };
+
+    return User.updateOne(query, {
+      $set: update
+    }).then(user => user);
+  };
+
+  // Get again the ref user Id with updated profile
+  const getUserProfile = () => {
+    return User.findById(req.user.id)
+      .select("-password")
+      .then(user => res.json(user));
+  };
+
+  return getUserIdRef()
+    .then(updateUserProfile)
+    .then(getUserProfile);
 });
 
 module.exports = router;
