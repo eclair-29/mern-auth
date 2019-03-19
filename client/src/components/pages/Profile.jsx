@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Profile = ({ isAuthenticated }) => {
-  if (!isAuthenticated) return <Redirect to="/register" />;
+  if (!isAuthenticated) return <Redirect to="/" />;
 
   return (
     <div className="profile wrapper">
