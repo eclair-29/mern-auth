@@ -1,4 +1,4 @@
-/* eslint no-console: "off" */
+/* eslint-disable no-console */
 const express = require("express");
 const config = require("config");
 const mongoose = require("mongoose");

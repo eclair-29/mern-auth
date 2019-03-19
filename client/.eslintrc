@@ -18,6 +18,7 @@
     "arrow-parens": ["error", "as-needed"],
     "comma-dangle": ["error", "never"],
     "no-unused-vars": ["error", { "vars": "local", "args": "none" }],
+    "object-curly-newline": "off",
     "quotes": ["error", "double"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }

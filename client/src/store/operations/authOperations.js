@@ -38,7 +38,44 @@ const loadUser = () => (dispatch, getState) => {
     });
 };
 
+// Register user operations
+const registerUser = ({ fname, lname, email, password }) => dispatch => {
+  // Preload state
+  dispatch(authActions.requestPreLoading());
+
+  // Headers
+  const config = {
+    headers: { "Content-type": "application/json" }
+  };
+
+  // Post request body
+  const body = JSON.stringify({ fname, lname, email, password });
+
+  axios
+    .post("/api/v.1/users", body, config)
+    .then(res => {
+      dispatch(authActions.registerUser(res.data));
+    })
+    .catch(err => {
+      const { data, status } = err.response;
+
+      dispatch(errorActions.fetchErrors(data, status, "REGISTER_FAIL"));
+      dispatch(authActions.getRegistrationError());
+    });
+};
+
+// Logout user
+const logoutUser = () => dispatch => {
+  // Preload state
+  dispatch(authActions.requestPreLoading());
+
+  // Logout call to action
+  dispatch(authActions.logoutUser());
+};
+
 export default {
   loadUser,
-  getTokenConfig
+  registerUser,
+  getTokenConfig,
+  logoutUser
 };

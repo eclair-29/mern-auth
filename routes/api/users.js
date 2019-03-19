@@ -34,7 +34,7 @@ router.post("/", (req, res) => {
   // Save the new user to the db together with a json web token
   const createNewUser = () => {
     // Create new user
-    const newUser = new User({ email, fname, lname, password });
+    const newUser = new User({ fname, lname, email, password });
 
     // Generate salt and hash the new user password
     bcrypt.genSalt(10, (err, salt) => {
@@ -53,9 +53,9 @@ router.post("/", (req, res) => {
     // Get server response and token upon saving as doc
     const getRes = user => {
       const userRes = {
-        email: user.email,
         fname: user.fname,
         lname: user.lname,
+        email: user.email,
         id: user.id
       };
 

@@ -1,0 +1,27 @@
+// Authentication component styles
+.log-in,
+.register {
+  max-width: 400px;
+  padding: 50px 20px;
+
+  .alert {
+    border-radius: 0 !important;
+  }
+}
+
+input {
+  color: #000;
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.btn {
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
