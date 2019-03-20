@@ -5,3 +5,12 @@
 @import "./components/layouts/layouts";
 @import "./components/auth/auth";
 @import "./components/pages/profile";
+@import "loaders.css/src/animations/ball-scale.scss";
+
+// React loaders
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
+}

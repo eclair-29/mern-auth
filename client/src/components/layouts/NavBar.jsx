@@ -2,7 +2,6 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 
-// NavBar node functional component
 const NavBar = ({ isAuthenticated, logoutUser }) => {
   const navLinks = isAuthenticated ? (
     // eslint-disable-next-line jsx-a11y/anchor-is-valid

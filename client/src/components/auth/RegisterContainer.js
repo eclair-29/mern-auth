@@ -15,9 +15,9 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const NavBarContainer = connect(
+const RegisterContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Register);
 
-export default NavBarContainer;
+export default RegisterContainer;

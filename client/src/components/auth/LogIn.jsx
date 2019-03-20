@@ -1,7 +1,9 @@
-/* eslint-disable react/no-unused-state */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/no-did-update-set-state */
 import React from "react";
-// eslint-disable-next-line object-curly-newline
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Redirect } from "react-router-dom";
+import { Alert, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import PropTypes from "prop-types";
 
 import common from "./common";
 
@@ -10,8 +12,29 @@ class LogIn extends React.Component {
   state = {
     password: "",
     email: "",
-    error: null
+    errorMsg: null
   };
+
+  static propTypes = {
+    isAuthenticated: PropTypes.bool,
+    loginUser: PropTypes.func.isRequired,
+    error: PropTypes.object.isRequired
+  };
+
+  static defaultProps = {
+    isAuthenticated: false
+  };
+
+  componentDidUpdate(prevProps) {
+    const { error } = this.props;
+
+    if (error !== prevProps.error) {
+      // Check for an error with an id of "LOGIN_FAIL"
+      if (error.id === "LOGIN_FAIL") {
+        this.setState({ errorMsg: error.msg.msg.msg });
+      } else this.setState({ errorMsg: null });
+    }
+  }
 
   handleChange = e => {
     this.setState({
@@ -21,10 +44,17 @@ class LogIn extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    e.target.reset();
+    const { fname, lname, email, password } = this.state;
+    const { loginUser } = this.props;
+
+    // Attempt to log in
+    loginUser({ fname, lname, email, password });
   };
 
   render() {
+    const { errorMsg } = this.state;
+    const { isAuthenticated } = this.props;
+
     const formFields = common.logInInputFields.map(field => (
       <FormGroup key={field.id}>
         <Label for={field.id}>{field.placeholder}</Label>
@@ -38,8 +68,15 @@ class LogIn extends React.Component {
       </FormGroup>
     ));
 
+    const errorAlert = errorMsg ? (
+      <Alert color="danger">{errorMsg}</Alert>
+    ) : null;
+
+    if (isAuthenticated) return <Redirect to="/profile" />;
+
     return (
       <Form onSubmit={this.handleSubmit} className="log-in wrapper">
+        {errorAlert}
         {formFields}
         <Button outline>Continue</Button>
       </Form>

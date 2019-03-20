@@ -64,6 +64,32 @@ const registerUser = ({ fname, lname, email, password }) => dispatch => {
     });
 };
 
+// Log In user
+const loginUser = ({ email, password }) => dispatch => {
+  // Preload state
+  dispatch(authActions.requestPreLoading());
+
+  // Headers
+  const config = {
+    headers: { "Content-type": "application/json" }
+  };
+
+  // Post request body
+  const body = JSON.stringify({ email, password });
+
+  axios
+    .post("/api/v.1/auth", body, config)
+    .then(res => {
+      dispatch(authActions.loginUser(res.data));
+    })
+    .catch(err => {
+      const { data, status } = err.response;
+
+      dispatch(errorActions.fetchErrors(data, status, "LOGIN_FAIL"));
+      dispatch(authActions.getLoginErrpr());
+    });
+};
+
 // Logout user
 const logoutUser = () => dispatch => {
   // Preload state
@@ -77,5 +103,6 @@ export default {
   loadUser,
   registerUser,
   getTokenConfig,
+  loginUser,
   logoutUser
 };

@@ -1,6 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/no-did-update-set-state */
-/* eslint-disable react/no-unused-state */
 import React from "react";
 import { Redirect } from "react-router-dom";
 import {
