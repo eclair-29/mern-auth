@@ -72,9 +72,7 @@ router.post("/", (req, res) => {
 router.get("/user", auth, (req, res) => {
   // Find the user by Id reference
   const getUserIdRef = () => {
-    return User.findById(req.user.id)
-      .select("-password")
-      .then(user => user);
+    return User.findById(req.user.id).then(user => user);
   };
 
   // After finding a reference Id, then
@@ -83,9 +81,8 @@ router.get("/user", auth, (req, res) => {
     const query = { _id: user.id };
     const update = {
       profile: {
-        _id: user.id,
         avatar: user.fname.substring(0, 1) + user.lname.substring(0, 1),
-        display_name: `${user.fname} ${user.lname}`
+        name: `${user.fname} ${user.lname}`
       }
     };
 

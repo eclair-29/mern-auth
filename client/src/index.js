@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import rootReducer from "./store";
+import rootReducer, { authActions } from "./store";
 
 // Redux store
 // eslint-disable-next-line no-underscore-dangle
@@ -16,6 +16,14 @@ const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(thunk))
 );
+
+// if there is a proper token in user browser/local storage
+// dispatch an action that sets isAuthenticated to true
+const token = localStorage.getItem("token");
+
+if (token) {
+  store.dispatch(authActions.autoAuth());
+}
 
 ReactDOM.render(
   <Provider store={store}>

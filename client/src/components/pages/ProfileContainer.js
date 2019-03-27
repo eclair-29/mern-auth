@@ -5,11 +5,12 @@ import Profile from "./Profile";
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
-  isLoading: state.auth.isLoading
+  isLoading: state.auth.isLoading,
+  user: state.auth.user
 });
 
 const mapDispatchToProps = dispatch => ({
-  logoutUser: () => dispatch(storeOperations.logoutUser())
+  loadUser: () => dispatch(storeOperations.loadUser())
 });
 
 const ProfileContainer = connect(

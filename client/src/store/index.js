@@ -8,3 +8,4 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 export { default as storeOperations } from "./operations";
+export { authActions, errorActions } from "./actions";

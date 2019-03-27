@@ -1,23 +1,7 @@
 import axios from "axios";
 
 import { authActions, errorActions } from "../actions";
-
-const getTokenConfig = getState => {
-  // Get token from localStorage
-  const { token } = getState().auth;
-
-  // Set request headers
-  const config = {
-    headers: { "Content-type": "application/json" }
-  };
-
-  // If a token exists, add to header
-  if (token) {
-    config.headers["x-auth-token"] = token;
-  }
-
-  return config;
-};
+import getTokenConfig from "../../helpers/authHeader";
 
 // Check for a token and load user
 const loadUser = () => (dispatch, getState) => {
@@ -102,7 +86,6 @@ const logoutUser = () => dispatch => {
 export default {
   loadUser,
   registerUser,
-  getTokenConfig,
   loginUser,
   logoutUser
 };

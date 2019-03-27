@@ -26,16 +26,6 @@ class Register extends React.Component {
     password: ""
   };
 
-  static propTypes = {
-    isAuthenticated: PropTypes.bool,
-    registerUser: PropTypes.func.isRequired,
-    error: PropTypes.object.isRequired
-  };
-
-  static defaultProps = {
-    isAuthenticated: false
-  };
-
   componentDidUpdate(prevProps) {
     const { error } = this.props;
 
@@ -85,7 +75,7 @@ class Register extends React.Component {
       <Alert color="danger">{errorMsg}</Alert>
     ) : null;
 
-    if (isAuthenticated) return <Redirect to="/profile" />;
+    if (isAuthenticated) return <Redirect to="/" />;
 
     return (
       <Form onSubmit={this.handleSubmit} className="register wrapper">
@@ -96,5 +86,15 @@ class Register extends React.Component {
     );
   }
 }
+
+Register.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  registerUser: PropTypes.func.isRequired,
+  error: PropTypes.object.isRequired
+};
+
+Register.defaultProps = {
+  isAuthenticated: false
+};
 
 export default Register;

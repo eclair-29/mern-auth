@@ -5,8 +5,16 @@ const NewSchema = mongoose.Schema;
 
 // Profile schema embedded to a user
 const ProfileSchema = new NewSchema({
+  _id: false,
   avatar: String,
-  display_name: String
+  name: String
+});
+
+// Timestamp realted to user
+const TimestampSchema = new NewSchema({
+  _id: false,
+  reg_date: { type: Date, default: Date.now },
+  mod_date: Date
 });
 
 // Create User scehema
@@ -16,7 +24,7 @@ const UserSchema = new NewSchema({
   lname: { type: String, required: true },
   password: { type: String, required: true, minlength: 10, maxlength: 100 },
   profile: ProfileSchema,
-  registered_date: { type: Date, default: Date.now }
+  timestamps: TimestampSchema
 });
 
 // Create model

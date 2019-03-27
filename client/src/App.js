@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import routes from "./routes";
 import { storeOperations } from "./store";
-import { NavBar } from "./components/layouts";
+import { NavBar as Nav } from "./components/layouts";
+import { Register, LogIn } from "./components/auth";
+import { Profile } from "./components/pages";
 
 class App extends React.Component {
   componentDidMount() {
@@ -14,23 +15,21 @@ class App extends React.Component {
   }
 
   render() {
-    const appRoutes = routes.appRoutes.map(route => {
-      const { exact, path, component, key } = route;
-
-      return (
-        <Switch key={key}>
-          <Route exact={exact} path={path} component={component} />
-        </Switch>
-      );
-    });
+    const appRoutes = (
+      <Switch>
+        <Route exact path="/" component={Profile} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={LogIn} />
+      </Switch>
+    );
 
     return (
-      <BrowserRouter>
+      <Router>
         <div className="App">
-          <NavBar />
+          <Nav />
           {appRoutes}
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

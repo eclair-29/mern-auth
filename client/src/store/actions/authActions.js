@@ -3,6 +3,9 @@ import { authTypes } from "../types";
 // Preloading before fetching a user
 const requestPreLoading = () => ({ type: authTypes.USER_LOADING });
 
+// Auto auth user
+const autoAuth = () => ({ type: authTypes.AUTO_AUTH });
+
 // Load a user
 const loadUser = payload => ({
   type: authTypes.USER_LOADED,
@@ -27,6 +30,7 @@ const getRegistrationError = () => ({ type: authTypes.REGISTER_FAIL });
 const logoutUser = () => ({ type: authTypes.LOGOUT_SUCCESS });
 
 export default {
+  autoAuth,
   requestPreLoading,
   loadUser,
   loginUser,

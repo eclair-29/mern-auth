@@ -10,7 +10,7 @@ const NavBar = ({ isAuthenticated, logoutUser }) => {
     </Link>
   ) : (
     <div className="signed-out-links">
-      <NavLink exact to="/" activeClassName="active">
+      <NavLink exact to="/login" activeClassName="active">
         Log In
       </NavLink>
       <NavLink to="/register" activeClassName="active">

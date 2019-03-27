@@ -15,16 +15,6 @@ class LogIn extends React.Component {
     errorMsg: null
   };
 
-  static propTypes = {
-    isAuthenticated: PropTypes.bool,
-    loginUser: PropTypes.func.isRequired,
-    error: PropTypes.object.isRequired
-  };
-
-  static defaultProps = {
-    isAuthenticated: false
-  };
-
   componentDidUpdate(prevProps) {
     const { error } = this.props;
 
@@ -44,11 +34,11 @@ class LogIn extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { fname, lname, email, password } = this.state;
+    const { email, password } = this.state;
     const { loginUser } = this.props;
 
     // Attempt to log in
-    loginUser({ fname, lname, email, password });
+    loginUser({ email, password });
   };
 
   render() {
@@ -72,7 +62,7 @@ class LogIn extends React.Component {
       <Alert color="danger">{errorMsg}</Alert>
     ) : null;
 
-    if (isAuthenticated) return <Redirect to="/profile" />;
+    if (isAuthenticated) return <Redirect to="/" />;
 
     return (
       <Form onSubmit={this.handleSubmit} className="log-in wrapper">
@@ -83,5 +73,15 @@ class LogIn extends React.Component {
     );
   }
 }
+
+LogIn.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  loginUser: PropTypes.func.isRequired,
+  error: PropTypes.object.isRequired
+};
+
+LogIn.defaultProps = {
+  isAuthenticated: false
+};
 
 export default LogIn;
