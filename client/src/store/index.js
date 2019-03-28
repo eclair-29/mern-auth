@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import thunk from "redux-thunk";
-import { authReducer, errorReducer } from "./reducers";
-import { authActions } from "./actions";
+import { authReducer, authActions } from "./auth";
+import { errorReducer } from "./error";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -25,5 +25,5 @@ if (token) {
 }
 
 export default store;
-export { default as storeOperations } from "./operations";
-export { authActions, errorActions } from "./actions";
+export { authOperations, authActions } from "./auth";
+export { errorActions } from "./error";

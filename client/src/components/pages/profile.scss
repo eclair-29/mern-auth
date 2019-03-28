@@ -1,0 +1,13 @@
+// Profile page styles
+.profile {
+  max-width: 500px;
+  padding: 100px 20px;
+  display: flex;
+  justify-content: center;
+
+  span {
+    padding-left: 5px;
+    color: #2196f3;
+    text-transform: capitalize;
+  }
+}

@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 
-import { storeOperations } from "../../store";
+import { authOperations } from "../../store";
 import NavBar from "./NavBar";
 
 const mapStateToProps = state => ({
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  logoutUser: () => dispatch(storeOperations.logoutUser())
+  logoutUser: () => dispatch(authOperations.logoutUser())
 });
 
 const NavBarContainer = compose(

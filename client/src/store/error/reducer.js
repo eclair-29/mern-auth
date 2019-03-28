@@ -1,4 +1,4 @@
-import { errorTypes } from "../types";
+import errorTypes from "./types";
 
 const initialState = {
   msg: "",

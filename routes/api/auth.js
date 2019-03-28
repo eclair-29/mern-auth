@@ -67,40 +67,12 @@ router.post("/", (req, res) => {
 });
 
 // route:         GET /api/v.1/auth/user
-// description:   Fetch user data
+// description:   Fetch user details
 // access:        private
 router.get("/user", auth, (req, res) => {
-  // Find the user by Id reference
-  const getUserIdRef = () => {
-    return User.findById(req.user.id).then(user => user);
-  };
-
-  // After finding a reference Id, then
-  // Update the profile details embedded to the ref user
-  const updateUserProfile = user => {
-    const query = { _id: user.id };
-    const update = {
-      profile: {
-        avatar: user.fname.substring(0, 1) + user.lname.substring(0, 1),
-        name: `${user.fname} ${user.lname}`
-      }
-    };
-
-    return User.updateOne(query, {
-      $set: update
-    }).then(user => user);
-  };
-
-  // Get again the ref user Id with updated profile
-  const getUserProfile = () => {
-    return User.findById(req.user.id)
-      .select("-password")
-      .then(user => res.json(user));
-  };
-
-  return getUserIdRef()
-    .then(updateUserProfile)
-    .then(getUserProfile);
+  User.findById(req.user.id)
+    .select("-password")
+    .then(user => res.json(user));
 });
 
 module.exports = router;

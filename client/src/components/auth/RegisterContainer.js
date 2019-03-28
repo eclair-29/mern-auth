@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { storeOperations } from "../../store";
+import { authOperations } from "../../store";
 
 import Register from "./Register";
 
@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   registerUser: ({ fname, lname, email, password }) => {
     const newUser = { fname, lname, email, password };
-    dispatch(storeOperations.registerUser(newUser));
+    dispatch(authOperations.registerUser(newUser));
   }
 });
 

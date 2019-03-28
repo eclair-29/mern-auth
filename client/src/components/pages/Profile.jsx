@@ -14,12 +14,12 @@ class Profile extends React.Component {
 
     if (!isAuthenticated) return <Redirect to="/login" />;
 
-    return (
+    return user ? (
       <div className="profile wrapper">
-        Redirected to profile, you are authenticated:
-        <span>{user && user.profile ? user.profile.name : "loading"}</span>
+        Thank you for signing up,
+        <span>{`${user.fname} ${user.lname}`}</span>
       </div>
-    );
+    ) : null;
   }
 }
 

@@ -1,4 +1,32 @@
 /* eslint-disable no-console */
+
+// Node/React Authentication Guidelines [USER REGISTRATION]
+// 1. setup - POST /api/v.1/users route
+// 2. declare registration input/request body (e.g. email, username, password)
+// 3. validate required fields
+// 4. check for existing user (find by: email or username)
+// 5. create new user if theres is no existing email found
+// 6. hash and encrypt new user password
+// 7. save the user to the db
+// 8. set server response and token upon saving as doc
+
+// Node/React Authentication Guidelines [USER LOGIN]
+// 1. setup - POST /api/v.1/auth route
+// 2. declare login input/request body (e.g. email and password)
+// 3. validate required fields
+// 4. check for existing user (find by: email or username)
+// 5. validate credentials and match passwords from the db and user input
+// 6. set server response and token if credentials are passed and passwrods are matched
+
+// Node/React Authentication Guidelines [AUTH MIDDLEWARE]
+// 1. create a folder to store all the middlewares
+// 2. create a file - auth.js at the middleware folder we just recently created
+// 3. import the jwt secret at config and jwt library
+// 4. create a function - auth
+// 5. declare a request header for "x-auth-token"
+// 6. check if there is a token living in the request header
+// 7. verify the token if there is any
+
 const express = require("express");
 const config = require("config");
 const mongoose = require("mongoose");

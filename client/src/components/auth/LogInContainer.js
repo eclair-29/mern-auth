@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { storeOperations } from "../../store";
+import { authOperations } from "../../store";
 
 import LogIn from "./LogIn";
 
@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   loginUser: ({ email, password }) => {
     const newUser = { email, password };
-    dispatch(storeOperations.loginUser(newUser));
+    dispatch(authOperations.loginUser(newUser));
   }
 });
 

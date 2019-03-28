@@ -5,11 +5,3 @@
 @import "./components/layouts/layouts";
 @import "./components/auth/auth";
 @import "./components/pages/profile";
-
-// React loaders
-.loader-hidden {
-  display: none;
-}
-.loader-active {
-  display: block;
-}

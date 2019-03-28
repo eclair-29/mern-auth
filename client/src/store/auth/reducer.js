@@ -1,4 +1,4 @@
-import { authTypes } from "../types";
+import authTypes from "./types";
 
 const initialState = {
   token: localStorage.getItem("token"),

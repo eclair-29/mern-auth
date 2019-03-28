@@ -1,4 +1,4 @@
-import { errorTypes } from "../types";
+import errorTypes from "./types";
 
 // Return errors
 const fetchErrors = (msg, status, id = null) => ({

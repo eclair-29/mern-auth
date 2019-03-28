@@ -1,6 +1,7 @@
 import axios from "axios";
 
-import { authActions, errorActions } from "../actions";
+import authActions from "./actions";
+import { errorActions } from "../error";
 import getTokenConfig from "../../helpers/authHeader";
 
 // Check for a token and load user

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import { storeOperations } from "../../store";
+import { authOperations } from "../../store";
 import Profile from "./Profile";
 
 const mapStateToProps = state => ({
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadUser: () => dispatch(storeOperations.loadUser())
+  loadUser: () => dispatch(authOperations.loadUser())
 });
 
 const ProfileContainer = connect(

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { storeOperations } from "./store";
+import { authOperations } from "./store";
 import { NavBar as Nav } from "./components/layouts";
 import { Register, LogIn } from "./components/auth";
 import { Profile } from "./components/pages";
@@ -35,7 +35,7 @@ class App extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  loadUser: () => dispatch(storeOperations.loadUser())
+  loadUser: () => dispatch(authOperations.loadUser())
 });
 
 App.propTypes = {

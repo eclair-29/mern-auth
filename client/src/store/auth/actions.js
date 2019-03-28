@@ -1,4 +1,4 @@
-import { authTypes } from "../types";
+import authTypes from "./types";
 
 // Preloading before fetching a user
 const requestPreLoading = () => ({ type: authTypes.USER_LOADING });
